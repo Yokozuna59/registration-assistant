@@ -180,6 +180,9 @@ fabric.properties
 .idea/**/azureSettings.xml
 
 ### Java ###
+# Target directory
+target/
+
 # Compiled class file
 *.class
 
