@@ -1,6 +1,6 @@
 package registration_assistant;
 
-public class Student extends Course {
+public class Section extends Course {
 	private int section;
 	private String fullName;
 	private String activity;
@@ -13,7 +13,7 @@ public class Student extends Course {
 	private int seats;
 	private int waitlist;
 
-	public Student(int credit, String name, Course[] corequisites, Course[] prerequisites,
+	public Section(int credit, String name, Course[] corequisites, Course[] prerequisites,
 			int section, String activity, String crn, String description, String instructor,
 			String day, String time, String location, int seats, int waitlist) {
 		super(credit, name, corequisites, prerequisites);
