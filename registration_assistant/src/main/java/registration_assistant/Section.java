@@ -7,7 +7,7 @@ public class Section extends Course {
 	private String crn;
 	private String description;
 	private String instructor;
-	private String day;
+	private String days;
 	private String time;
 	private String location;
 	private int seats;
@@ -23,7 +23,7 @@ public class Section extends Course {
 		this.crn = crn;
 		this.description = description;
 		this.instructor = instructor;
-		this.day = day;
+		this.days = day;
 		this.time = time;
 		this.location = location;
 		this.seats = seats;
@@ -39,7 +39,7 @@ public class Section extends Course {
 	}
 
 	public String getDay() {
-		return day;
+		return days;
 	}
 
 	public String getDescription() {
