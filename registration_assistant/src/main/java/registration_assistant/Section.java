@@ -2,32 +2,46 @@ package registration_assistant;
 
 public class Section extends Course {
 	private int section;
-	private String fullName;
+	private int registerAvailability;
+	private int waitlistAvailability;
 	private String activity;
 	private String crn;
-	private String description;
-	private String instructor;
 	private String days;
-	private String time;
+	private String description;
+	private String fullName;
+	private String instructor;
 	private String location;
-	private int seats;
-	private int waitlist;
+	private String time;
 
 	public Section(int credit, String name, Course[] corequisites, Course[] prerequisites,
-			int section, String activity, String crn, String description, String instructor,
-			String day, String time, String location, int seats, int waitlist) {
+			int section, int registerAvailability, int waitlistAvailability, String activity,
+			String crn, String days, String description, String instructor, String location, String time) {
 		super(credit, name, corequisites, prerequisites);
+
+		this.registerAvailability = registerAvailability;
 		this.section = section;
-		this.fullName = String.format("%s-%02d", getName(), section);
+		this.waitlistAvailability = waitlistAvailability;
+
 		this.activity = activity;
 		this.crn = crn;
+		this.days = days;
 		this.description = description;
+		this.fullName = String.format("%s-%02d", getName(), section);
 		this.instructor = instructor;
-		this.days = day;
-		this.time = time;
 		this.location = location;
-		this.seats = seats;
-		this.waitlist = waitlist;
+		this.time = time;
+	}
+
+	public int getSection() {
+		return section;
+	}
+
+	public int getRegisterAvailability() {
+		return registerAvailability;
+	}
+
+	public int getWaitlistAvailability() {
+		return waitlistAvailability;
 	}
 
 	public String getActivity() {
@@ -38,7 +52,7 @@ public class Section extends Course {
 		return crn;
 	}
 
-	public String getDay() {
+	public String getDays() {
 		return days;
 	}
 
@@ -58,19 +72,7 @@ public class Section extends Course {
 		return location;
 	}
 
-	public int getSeats() {
-		return seats;
-	}
-
-	public int getSection() {
-		return section;
-	}
-
 	public String getTime() {
 		return time;
-	}
-
-	public int getWaitlist() {
-		return waitlist;
 	}
 }
