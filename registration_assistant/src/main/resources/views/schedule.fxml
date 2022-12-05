@@ -97,8 +97,8 @@
             <Label text="Term 222" GridPane.columnIndex="0" />
             <Label text="Sunday" GridPane.columnIndex="1" />
             <Label text="Monday" GridPane.columnIndex="2" />
-            <Label text="Teasday" GridPane.columnIndex="3" />
-            <Label text="Wendesday" GridPane.columnIndex="4" />
+            <Label text="Tuesday" GridPane.columnIndex="3" />
+            <Label text="Wednesday" GridPane.columnIndex="4" />
             <Label text="Thursday" GridPane.columnIndex="5" />
          </children>
       </GridPane>

@@ -3,11 +3,10 @@ package registration_assistant;
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
-import java.net.URI;
 import java.util.ArrayList;
 
 public class ReadCSV {
-    public static ArrayList<Section> readCourseOffering(URI filePath) {
+    public static ArrayList<Section> readCourseOffering(String filePath) {
         try (Scanner sectionsFile = new Scanner(new File(filePath))) {
             ArrayList<Section> SectionArrList = new ArrayList<>();
             sectionsFile.nextLine();
@@ -28,7 +27,7 @@ public class ReadCSV {
         }
     }
 
-    public static ArrayList<Course> readDegreePlan(URI filePath) {
+    public static ArrayList<Course> readDegreePlan(String filePath) {
         try (Scanner degreePlanFile = new Scanner(new File(filePath))) {
             ArrayList<Course> degreePlanArrList = new ArrayList<>();
             degreePlanFile.nextLine();
@@ -46,7 +45,7 @@ public class ReadCSV {
         }
     }
 
-    public static ArrayList<FinishedCourse> readFinishedCourse(URI filePath) {
+    public static ArrayList<FinishedCourse> readFinishedCourse(String filePath) {
         try (Scanner finishedCoursedFile = new Scanner(new File(filePath))) {
             ArrayList<FinishedCourse> finishedCourseArrList = new ArrayList<>();
             while (finishedCoursedFile.hasNext()) {
