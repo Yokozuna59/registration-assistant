@@ -1,6 +1,8 @@
 package registration_assistant;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,10 +14,19 @@ import java.util.ArrayList;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        ArrayList<Course> courses=ReadFiles.readDegreePlan("src\\main\\resources\\data\\DegreePlan.csv");
-        ArrayList<FinishedCourse> finishCourses=ReadFiles.readFinshedCourses("src\\main\\resources\\data\\FinishedCourses.csv");
-        ArrayList<Section> Sections=ReadFiles.readCourseOffering("src\\main\\resources\\data\\CourseOffering.csv");
+        File dataFile = new File("data");
 
+        try {
+            ArrayList<Course> courses = ReadCSV.readDegreePlan(getClass().getClassLoader().getResource(
+                    new File(dataFile, "DegreePlan.csv").toString()).toURI());
+            ArrayList<FinishedCourse> finishCourses = ReadCSV
+                    .readFinishedCourse(getClass().getClassLoader().getResource(
+                            new File(dataFile, "FinishedCourses.csv").toString()).toURI());
+            ArrayList<Section> Sections = ReadCSV.readCourseOffering(getClass().getClassLoader().getResource(
+                    new File(dataFile, "CourseOffering.csv").toString()).toURI());
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
 
         AnchorPane root = FXMLLoader.load(getClass().getClassLoader().getResource("views/index.fxml"));
         Scene scene = new Scene(root);
@@ -26,7 +37,6 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-    
         launch();
     }
 }
