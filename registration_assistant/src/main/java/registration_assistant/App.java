@@ -14,7 +14,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         ArrayList<Course> courses = ReadCSV.readDegreePlan(
                 getClass().getResource("/data/DegreePlan.csv").getFile());
-        ArrayList<FinishedCourse> finishCourses = ReadCSV.readFinishedCourse(
+        ArrayList<FinishedCourse> finishedCourses = ReadCSV.readFinishedCourse(
                 getClass().getResource("/data/FinishedCourses.csv").getFile());
         ArrayList<Section> sections = ReadCSV.readCourseOffering(
                 getClass().getResource("/data/CourseOffering.csv").getFile());
