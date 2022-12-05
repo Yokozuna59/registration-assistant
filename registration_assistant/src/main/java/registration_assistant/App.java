@@ -14,13 +14,12 @@ import java.util.ArrayList;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        File dataFile = new File("data");
-        ArrayList<Course> courses = ReadCSV
-                .readDegreePlan(getClass().getResource("/data/DegreePlan.csv").getFile());
-        ArrayList<FinishedCourse> finishCourses = ReadCSV
-                .readFinishedCourse(getClass().getResource("/data/FinishedCourses.csv").getFile());
-        ArrayList<Section> sections = ReadCSV
-                .readCourseOffering(getClass().getResource("/data/CourseOffering.csv").getFile());
+        ArrayList<Course> courses = ReadCSV.readDegreePlan(
+                getClass().getResource("/data/DegreePlan.csv").getFile());
+        ArrayList<FinishedCourse> finishCourses = ReadCSV.readFinishedCourse(
+                getClass().getResource("/data/FinishedCourses.csv").getFile());
+        ArrayList<Section> sections = ReadCSV.readCourseOffering(
+                getClass().getResource("/data/CourseOffering.csv").getFile());
 
         GridPane root = FXMLLoader.load(getClass().getClassLoader().getResource("views/schedule.fxml"));
         Scene scene = new Scene(root);
