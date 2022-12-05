@@ -3,10 +3,10 @@ package registration_assistant;
 public class Course {
     private int credit;
     private String name;
-    private Course[] corequisites;
-    private Course[] prerequisites;
+    private String[] corequisites;
+    private String[] prerequisites;
 
-    public Course(int credit, String name, Course[] corequisites, Course[] prerequisites) {
+    public Course(int credit, String name, String[] corequisites, String[] prerequisites) {
         this.credit = credit;
         this.name = name;
         this.corequisites = corequisites;
@@ -21,11 +21,11 @@ public class Course {
         return name;
     }
 
-    public Course[] getCorequisites() {
+    public String[] getCorequisites() {
         return corequisites;
     }
 
-    public Course[] getPrerequisites() {
+    public String[] getPrerequisites() {
         return prerequisites;
     }
 }

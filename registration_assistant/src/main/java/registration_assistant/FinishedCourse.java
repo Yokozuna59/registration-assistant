@@ -1,17 +1,17 @@
 package registration_assistant;
 
 public class FinishedCourse {
-    private Course course;
+    private String course;
     private String grade;
     private String term;
 
-    public FinishedCourse(Course course, String grade, String term) {
+    public FinishedCourse(String course, String grade, String term) {
         this.course = course;
         this.term = term;
         this.grade = grade;
     }
 
-    public Course getCourse() {
+    public String getCourse() {
         return course;
     }
 
