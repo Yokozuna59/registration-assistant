@@ -1,8 +1,6 @@
 package registration_assistant;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
