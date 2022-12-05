@@ -2,87 +2,105 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.5" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView layoutX="80.0" prefHeight="607.5" prefWidth="1000.0">
-        <columns>
-          <TableColumn editable="false" minWidth="0.0" prefWidth="200.0" resizable="false" sortable="false" text="Sunday" />
-          <TableColumn editable="false" minWidth="0.0" prefWidth="200.0" resizable="false" sortable="false" text="Monday" />
-            <TableColumn editable="false" prefWidth="200.0" resizable="false" sortable="false" text="Tuesday" />
-            <TableColumn editable="false" minWidth="0.0" prefWidth="200.0" resizable="false" sortable="false" text="Wednesday" />
-            <TableColumn editable="false" minWidth="0.0" prefWidth="200.0" resizable="false" sortable="false" text="Thursday" />
-        </columns>
-      </TableView>
-      <VBox id="times" alignment="TOP_CENTER" layoutY="1.0" prefHeight="607.5" prefWidth="80.0">
+      <GridPane alignment="CENTER" gridLinesVisible="true" layoutX="99.0" layoutY="116.0" prefHeight="608.0" prefWidth="1080.0" AnchorPane.bottomAnchor="116.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="116.0">
+         <columnConstraints>
+            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="80.0" minWidth="0.0" percentWidth="0.0" prefWidth="80.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="200.0" minWidth="0.0" percentWidth="0.0" prefWidth="200.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="200.0" minWidth="0.0" percentWidth="0.0" prefWidth="200.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="200.0" minWidth="0.0" percentWidth="0.0" prefWidth="200.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="200.0" minWidth="0.0" percentWidth="0.0" prefWidth="206.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="200.0" minWidth="0.0" percentWidth="0.0" prefWidth="200.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="46.73076923076923" minHeight="0.0" percentHeight="0.0" prefHeight="46.73076923076923" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="46.73076923076923" minHeight="0.0" percentHeight="0.0" prefHeight="46.73076923076923" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="46.73076923076923" minHeight="0.0" percentHeight="0.0" prefHeight="46.73076923076923" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="46.73076923076923" minHeight="0.0" percentHeight="0.0" prefHeight="46.73076923076923" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="46.73076923076923" minHeight="0.0" percentHeight="0.0" prefHeight="46.73076923076923" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="46.73076923076923" minHeight="0.0" percentHeight="0.0" prefHeight="46.73076923076923" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="46.73076923076923" minHeight="0.0" percentHeight="0.0" prefHeight="46.73076923076923" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="46.73076923076923" minHeight="0.0" percentHeight="0.0" prefHeight="46.73076923076923" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="46.73076923076923" minHeight="0.0" percentHeight="0.0" prefHeight="46.73076923076923" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="46.73076923076923" minHeight="0.0" percentHeight="0.0" prefHeight="46.73076923076923" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="46.73076923076923" minHeight="0.0" percentHeight="0.0" prefHeight="46.73076923076923" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="46.73076923076923" minHeight="0.0" percentHeight="0.0" prefHeight="46.73076923076923" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="46.73076923076923" minHeight="0.0" percentHeight="0.0" prefHeight="46.73076923076923" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <Label text="7:00">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
+            <Label text="7:00" textAlignment="CENTER" GridPane.rowIndex="1">
                <padding>
                   <Insets bottom="19.0" left="19.0" right="19.0" top="19.0" />
                </padding>
             </Label>
-            <Label text="8:00">
+            <Label text="9:00" GridPane.rowIndex="3">
                <padding>
                   <Insets bottom="19.0" left="19.0" right="19.0" top="19.0" />
                </padding>
             </Label>
-            <Label text="9:00">
+            <Label text="8:00" GridPane.rowIndex="2">
                <padding>
                   <Insets bottom="19.0" left="19.0" right="19.0" top="19.0" />
                </padding>
             </Label>
-            <Label text="10:00">
+            <Label text="10:00" GridPane.rowIndex="4">
                <padding>
                   <Insets bottom="19.0" left="19.0" right="19.0" top="19.0" />
                </padding>
             </Label>
-            <Label text="11:00">
+            <Label text="17:00" GridPane.rowIndex="11">
                <padding>
                   <Insets bottom="19.0" left="19.0" right="19.0" top="19.0" />
                </padding>
             </Label>
-            <Label text="12:00">
+            <Label text="16:00" GridPane.rowIndex="10">
                <padding>
                   <Insets bottom="19.0" left="19.0" right="19.0" top="19.0" />
                </padding>
             </Label>
-            <Label text="13:00">
+            <Label text="15:00" GridPane.rowIndex="9">
                <padding>
                   <Insets bottom="19.0" left="19.0" right="19.0" top="19.0" />
                </padding>
             </Label>
-            <Label text="14:00">
+            <Label text="14:00" GridPane.rowIndex="8">
                <padding>
                   <Insets bottom="19.0" left="19.0" right="19.0" top="19.0" />
                </padding>
             </Label>
-            <Label text="15:00">
+            <Label text="13:00" GridPane.rowIndex="7">
                <padding>
                   <Insets bottom="19.0" left="19.0" right="19.0" top="19.0" />
                </padding>
             </Label>
-            <Label text="16:00">
+            <Label text="12:00" GridPane.rowIndex="6">
                <padding>
                   <Insets bottom="19.0" left="19.0" right="19.0" top="19.0" />
                </padding>
             </Label>
-            <Label text="17:00">
+            <Label text="11:00" GridPane.rowIndex="5">
                <padding>
                   <Insets bottom="19.0" left="19.0" right="19.0" top="19.0" />
                </padding>
             </Label>
+            <Label text="18:00" GridPane.rowIndex="12">
+               <padding>
+                  <Insets bottom="19.0" left="19.0" right="19.0" top="19.0" />
+               </padding>
+            </Label>
+            <Label text="Term 222" GridPane.columnIndex="0" />
+            <Label text="Sunday" GridPane.columnIndex="1" />
+            <Label text="Monday" GridPane.columnIndex="2" />
+            <Label text="Teasday" GridPane.columnIndex="3" />
+            <Label text="Wendesday" GridPane.columnIndex="4" />
+            <Label text="Thursday" GridPane.columnIndex="5" />
          </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </VBox>
+      </GridPane>
    </children>
 </AnchorPane>
