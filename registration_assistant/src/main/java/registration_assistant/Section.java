@@ -1,9 +1,9 @@
 package registration_assistant;
 
 public class Section extends Course {
-	private int section;
-	private int registerAvailability;
-	private int waitlistAvailability;
+	private String section;
+	private String registerAvailability;
+	private String waitlistAvailability;
 	private String activity;
 	private String crn;
 	private String days;
@@ -13,9 +13,9 @@ public class Section extends Course {
 	private String location;
 	private String time;
 
-	public Section(int credit, String name, Course[] corequisites, Course[] prerequisites,
-			int section, int registerAvailability, int waitlistAvailability, String activity,
-			String crn, String days, String description, String instructor, String location, String time) {
+	public Section(int credit, String name, String[] corequisites, String[] prerequisites,
+			String section, String registerAvailability, String waitlistAvailability, String activity,
+			String crn, String days, String description,String fullName, String instructor, String location, String time) {
 		super(credit, name, corequisites, prerequisites);
 
 		this.registerAvailability = registerAvailability;
@@ -26,21 +26,21 @@ public class Section extends Course {
 		this.crn = crn;
 		this.days = days;
 		this.description = description;
-		this.fullName = String.format("%s-%02d", getName(), section);
+		this.fullName = fullName;
 		this.instructor = instructor;
 		this.location = location;
 		this.time = time;
 	}
 
-	public int getSection() {
+	public String getSection() {
 		return section;
 	}
 
-	public int getRegisterAvailability() {
+	public String getRegisterAvailability() {
 		return registerAvailability;
 	}
 
-	public int getWaitlistAvailability() {
+	public String getWaitlistAvailability() {
 		return waitlistAvailability;
 	}
 
