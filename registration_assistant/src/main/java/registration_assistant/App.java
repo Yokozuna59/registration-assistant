@@ -7,7 +7,7 @@ import java.net.URISyntaxException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import java.util.ArrayList;
 
@@ -19,10 +19,10 @@ public class App extends Application {
                 .readDegreePlan(getClass().getResource("/data/DegreePlan.csv").getFile());
         ArrayList<FinishedCourse> finishCourses = ReadCSV
                 .readFinishedCourse(getClass().getResource("/data/FinishedCourses.csv").getFile());
-        ArrayList<Section> Sections = ReadCSV
+        ArrayList<Section> sections = ReadCSV
                 .readCourseOffering(getClass().getResource("/data/CourseOffering.csv").getFile());
 
-        AnchorPane root = FXMLLoader.load(getClass().getClassLoader().getResource("views/Schedule.fxml"));
+        GridPane root = FXMLLoader.load(getClass().getClassLoader().getResource("views/schedule.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.sizeToScene();
