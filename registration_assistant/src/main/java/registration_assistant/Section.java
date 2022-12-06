@@ -15,7 +15,8 @@ public class Section extends Course {
 
 	public Section(int credit, String name, String[] corequisites, String[] prerequisites,
 			String section, String registerAvailability, String waitlistAvailability, String activity,
-			String crn, String days, String description,String fullName, String instructor, String location, String time) {
+			String crn, String days, String description, String fullName, String instructor, String location,
+			String time) {
 		super(credit, name, corequisites, prerequisites);
 
 		this.registerAvailability = registerAvailability;
