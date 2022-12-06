@@ -19,6 +19,8 @@ public class App extends Application {
         ArrayList<Section> sections = ReadCSV.readCourseOffering(
                 getClass().getResource("/data/CourseOffering.csv").getFile());
 
+        Student student1 = new Student(finishedCourses, null);
+        student1.remainCourses(courses, finishedCourses, sections);
         GridPane root = FXMLLoader.load(getClass().getClassLoader().getResource("views/schedule.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
