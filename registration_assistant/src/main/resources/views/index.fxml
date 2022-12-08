@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-    xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-</AnchorPane>
+<ScrollPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+	<content>
+		<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1420.0" prefWidth="1206.0">
+			<children>
+				<fx:include source="schedule.fxml" />
+				<fx:include layoutY="770.0" source="courses.fxml" />
+				<fx:include source="section.fxml" layoutY="60.0" layoutX="80" />
+			</children>
+		</AnchorPane>
+	</content>
+</ScrollPane>
