@@ -5,7 +5,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 import java.util.ArrayList;
 
@@ -21,10 +21,13 @@ public class App extends Application {
 
         Student student1 = new Student(finishedCourses, null);
         student1.remainCourses(courses, finishedCourses, sections);
-        GridPane root = FXMLLoader.load(getClass().getClassLoader().getResource("views/schedule.fxml"));
+
+        ScrollPane root = FXMLLoader.load(getClass().getClassLoader().getResource("views/index.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.sizeToScene();
+        stage.setMinHeight(758);
+        stage.setMinWidth(1206);
         stage.setTitle("Registration Assistant");
         stage.show();
     }
