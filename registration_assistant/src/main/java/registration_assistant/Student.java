@@ -3,45 +3,63 @@ package registration_assistant;
 import java.util.ArrayList;
 
 public class Student {
-    private ArrayList<FinishedCourse> finisehdCourses;
+    private ArrayList<FinishedCourse> finishedCourses;
     private ArrayList<Schedule> schedules;
 
-    public Student(ArrayList<FinishedCourse> finisehdCourses, ArrayList<Schedule> schedules) {
-        this.finisehdCourses = finisehdCourses;
+    public Student(ArrayList<FinishedCourse> finishedCourses, ArrayList<Schedule> schedules) {
+        this.finishedCourses = finishedCourses;
         this.schedules = schedules;
     }
 
     public ArrayList<FinishedCourse> getFinisehdCourses() {
-        return finisehdCourses;
+        return finishedCourses;
     }
 
     public ArrayList<Schedule> getSchedules() {
         return schedules;
     }
 
-    public void remainCourses(ArrayList<Course> courses, ArrayList<FinishedCourse> finishedCourses,
+    public void remainCourses(ArrayList<Course> courses,
             ArrayList<Section> sections) {
-        System.out.println(sections.size());
-        for (int i = 0; i < finisehdCourses.size(); i++) {
-            FinishedCourse passedCourse = finishedCourses.get(i);
-            for (int j = 0; j < courses.size(); j++) {
-                Course currentCourse = courses.get(j);
-
-                if (passedCourse.getCourse().equals(currentCourse.getName())) {
-                    courses.remove(currentCourse);
-                    break;
-                }
-            }
-            for (int j = 0; j < courses.size(); j++) {
-                Section coursePlace = sections.get(j);
-                if (passedCourse.getCourse().equals(coursePlace.getName())) {
-                    sections.remove(coursePlace);
+        for (int i = 0; i < finishedCourses.size(); i++) {
+            if (finishedCourses.get(i).getGrade().equals("F"))
+                finishedCourses.remove(i);
+        }
+        for (int i = 0; i < finishedCourses.size(); i++) {
+            FinishedCourse course = finishedCourses.get(i);
+            for (int j = sections.size() - 1; j >= 0; j--) {
+                if (sections.get(j).getName().equals(course.getCourse())) {
+                    sections.remove(j);
                 }
             }
         }
-        System.out.println(courses.size());
-        System.out.println(sections.size());
-        // just for checking
-
-    }
+        ArrayList<Course> coursesWithPq = new ArrayList<>();
+        for (int i = 0; i < finishedCourses.size(); i++) {
+            String courseName = finishedCourses.get(i).getCourse();
+            for (int j = 0; j < courses.size(); j++) {
+                String[] prerequisiteCourses = courses.get(j).getPrerequisites();
+                for (int k = 0; k < prerequisiteCourses.length; k++) {
+                    if (prerequisiteCourses[k].equals(courseName))
+                        coursesWithPq.add(courses.get(j));
+                }
+            }
+        }
+        for (int j = 0; j < courses.size(); j++) {
+            String[] prerequisiteCourses = courses.get(j).getPrerequisites();
+            for (int k = 0; k < prerequisiteCourses.length; k++) {
+                if (prerequisiteCourses[k].equals("None"))
+                    coursesWithPq.add(courses.get(j));
+            }
+        }
+        for(int i=sections.size()-1;i>=0;i--){
+            boolean found=false;
+            for (int j=0;j<coursesWithPq.size();j++){
+                if(sections.get(i).getName().equals(coursesWithPq.get(j).getName()))
+                    found=true;
+            }
+            if(!found)
+                sections.remove(i);
+        }
+        
+}
 }

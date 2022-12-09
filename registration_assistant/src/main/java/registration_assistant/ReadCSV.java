@@ -35,7 +35,7 @@ public class ReadCSV {
                 String currentLine = degreePlanFile.nextLine();
                 String[] degreePlanArrayList = currentLine.split(",");
                 degreePlanArrList.add(new Course(Integer.parseInt(degreePlanArrayList[1]), degreePlanArrayList[0],
-                        degreePlanArrayList[2].split(";"), degreePlanArrayList[3].split(";")));
+                        degreePlanArrayList[3].split(";"), degreePlanArrayList[2].split(";")));
             }
             degreePlanFile.close();
             return degreePlanArrList;

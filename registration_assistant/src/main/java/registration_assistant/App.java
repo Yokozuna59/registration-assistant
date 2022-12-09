@@ -20,8 +20,10 @@ public class App extends Application {
                 getClass().getResource("/data/CourseOffering.csv").getFile());
 
         Student student1 = new Student(finishedCourses, null);
-        student1.remainCourses(courses, finishedCourses, sections);
-
+        student1.remainCourses(courses, sections);
+        System.out.println(sections.size());
+        for(int i=0;i<sections.size();i++)
+            System.out.println(sections.get(i).getFullName());
         ScrollPane root = FXMLLoader.load(getClass().getClassLoader().getResource("views/index.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
