@@ -9,52 +9,52 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="225.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ee1515" height="50.0" stroke="BLACK" strokeType="INSIDE" width="225.0" />
-      <GridPane alignment="BOTTOM_CENTER" layoutY="6.0" prefHeight="48.0" prefWidth="210.0">
-         <columnConstraints>
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" percentWidth="0.0" prefWidth="180.0" />
-            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="45.0" minWidth="45.0" percentWidth="0.0" prefWidth="45.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="25.0" prefHeight="25.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="25.0" prefHeight="25.0" valignment="BOTTOM" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Label alignment="TOP_CENTER" text="NULL101-00@00-0000">
-               <font>
-                  <Font size="12.0" />
-               </font>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" />
-               </padding>
-            </Label>
-            <Label contentDisplay="CENTER" text="00:00" textAlignment="CENTER" GridPane.columnIndex="1">
-               <font>
-                  <Font size="12.0" />
-               </font>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" />
-               </padding>
-            </Label>
-            <Label text="00:00" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="12.0" />
-               </font>
-               <padding>
-                  <Insets left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </Label>
-            <Label text="Reda Al Sulais" GridPane.rowIndex="1">
-               <font>
-                  <Font size="12.0" />
-               </font>
-               <padding>
-                  <Insets left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </Label>
-         </children>
-      </GridPane>
-   </children>
+<Pane maxHeight="50.0" maxWidth="225.0" minHeight="50.0" minWidth="225.0" prefHeight="50.0" prefWidth="225.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#0894e4" height="50.0" stroke="BLACK" strokeType="INSIDE" width="225.0" />
+        <GridPane alignment="TOP_CENTER" maxHeight="50.0" maxWidth="225.0" minHeight="50.0" minWidth="225.0" prefHeight="50.0" prefWidth="225.0">
+            <columnConstraints>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" percentWidth="0.0" prefWidth="180.0" />
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="45.0" minWidth="45.0" percentWidth="0.0" prefWidth="45.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="25.0" minHeight="25.0" percentHeight="0.0" prefHeight="25.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="25.0" minHeight="25.0" percentHeight="0.0" prefHeight="25.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label alignment="TOP_CENTER" prefWidth="148.0" text="NULL000-00@00-0000">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                    </padding>
+                </Label>
+                <Label contentDisplay="CENTER" text="00:00" textAlignment="CENTER" GridPane.columnIndex="1">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                    </padding>
+                </Label>
+                <Label text="00:00" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                    </padding>
+                </Label>
+                <Label text="Null Null" GridPane.rowIndex="1">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                    </padding>
+                </Label>
+            </children>
+        </GridPane>
+    </children>
 </Pane>
