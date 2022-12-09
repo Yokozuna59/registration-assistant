@@ -19,12 +19,21 @@ public class Student {
         return schedules;
     }
 
-    public void remainCourses(ArrayList<Course> courses,
+    public void addSchedule(Schedule schedule) {
+        schedules.add(schedule);
+    }
+
+    public void removeSchedule(Schedule schedule) {
+        schedules.remove(schedule);
+    }
+
+    public void remainCourses(ArrayList<Course> courses, ArrayList<FinishedCourse> finishedCourses,
             ArrayList<Section> sections) {
         for (int i = 0; i < finishedCourses.size(); i++) {
             if (finishedCourses.get(i).getGrade().equals("F"))
                 finishedCourses.remove(i);
         }
+
         for (int i = 0; i < finishedCourses.size(); i++) {
             FinishedCourse course = finishedCourses.get(i);
             for (int j = sections.size() - 1; j >= 0; j--) {
@@ -33,6 +42,7 @@ public class Student {
                 }
             }
         }
+
         ArrayList<Course> coursesWithPq = new ArrayList<>();
         for (int i = 0; i < finishedCourses.size(); i++) {
             String courseName = finishedCourses.get(i).getCourse();
@@ -44,6 +54,7 @@ public class Student {
                 }
             }
         }
+
         for (int j = 0; j < courses.size(); j++) {
             String[] prerequisiteCourses = courses.get(j).getPrerequisites();
             for (int k = 0; k < prerequisiteCourses.length; k++) {
@@ -51,15 +62,15 @@ public class Student {
                     coursesWithPq.add(courses.get(j));
             }
         }
-        for(int i=sections.size()-1;i>=0;i--){
-            boolean found=false;
-            for (int j=0;j<coursesWithPq.size();j++){
-                if(sections.get(i).getName().equals(coursesWithPq.get(j).getName()))
-                    found=true;
+
+        for (int i = sections.size() - 1; i >= 0; i--) {
+            boolean found = false;
+            for (int j = 0; j < coursesWithPq.size(); j++) {
+                if (sections.get(i).getName().equals(coursesWithPq.get(j).getName()))
+                    found = true;
             }
-            if(!found)
+            if (!found)
                 sections.remove(i);
         }
-        
-}
+    }
 }
