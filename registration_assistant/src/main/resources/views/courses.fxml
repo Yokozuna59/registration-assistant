@@ -6,17 +6,17 @@
 <TableView fixedCellSize="0.0" prefHeight="814.05" prefWidth="1447.2" xmlns="http://javafx.com/javafx/19"
     xmlns:fx="http://javafx.com/fxml/1">
     <columns>
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" sortable="false" text="COURSE" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" text="ACTIVITY" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" text="CRN" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" text="DESCREPTION" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" text="INSTRUCTOR" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" text="DAY" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" text="TIME" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" text="LOCATION" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" text="STATUS" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" text="WAITLIST" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" text="ADD" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" text="REMOVE" />
+        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="COURSE" />
+        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="ACTIVITY" />
+        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="CRN" />
+        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="DESCREPTION" />
+        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="INSTRUCTOR" />
+        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="DAY" />
+        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="TIME" />
+        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="LOCATION" />
+        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="STATUS" />
+        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="WAITLIST" />
+        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="ADD" />
+        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="REMOVE" />
     </columns>
 </TableView>
