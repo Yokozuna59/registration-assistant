@@ -10,7 +10,7 @@
 		<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
 			prefHeight="1794.05" prefWidth="1547.2">
 			<children>
-				<Label layoutX="501.0" layoutY="55.0" text="Registration Assistant">
+				<Label layoutX="501.0" layoutY="50.0" text="Registration Assistant">
 					<font>
 						<Font size="50.0" />
 					</font>
