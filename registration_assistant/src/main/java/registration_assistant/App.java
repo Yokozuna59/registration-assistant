@@ -26,8 +26,8 @@ public class App extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.sizeToScene();
-        stage.setMinHeight(758);
-        stage.setMinWidth(1447.2);
+        stage.setMinWidth(1563.05);
+        stage.setMaxWidth(1563.05);
         stage.setTitle("Registration Assistant");
         stage.show();
     }
