@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <ScrollPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
 	<content>
-		<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1420.0" prefWidth="1206.0">
+		<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+			prefHeight="1794.05" prefWidth="1547.2">
 			<children>
-				<fx:include source="schedule.fxml" />
-				<fx:include layoutY="770.0" source="courses.fxml" />
-				<fx:include source="section.fxml" layoutY="60.0" layoutX="80" />
+				<Label layoutX="501.0" layoutY="55.0" text="Registration Assistant">
+					<font>
+						<Font size="50.0" />
+					</font>
+				</Label>
+				<fx:include layoutX="151.1" layoutY="160.0" source="schedule.fxml" />
+				<fx:include layoutX="231.1" layoutY="220.5" source="section.fxml" />
+				<fx:include layoutX="50.0" layoutY="930.0" source="courses.fxml" />
 			</children>
 		</AnchorPane>
 	</content>
