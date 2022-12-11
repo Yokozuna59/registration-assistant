@@ -1,6 +1,8 @@
 package registration_assistant;
 
-public class Course {
+import java.io.Serializable;
+
+public class Course implements Serializable {
     private int credit;
     private String name;
     private String[] corequisites;

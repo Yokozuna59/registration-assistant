@@ -1,8 +1,9 @@
 package registration_assistant;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Schedule {
+public class Schedule implements Serializable {
     private String term;
     private ArrayList<Section> sections;
 

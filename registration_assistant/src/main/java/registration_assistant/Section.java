@@ -1,6 +1,8 @@
 package registration_assistant;
 
-public class Section extends Course {
+import java.io.Serializable;
+
+public class Section extends Course implements Serializable {
 	private String section;
 	private String registerAvailability;
 	private String waitlistAvailability;
