@@ -10,14 +10,14 @@
 		<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
 			prefHeight="1794.05" prefWidth="1547.2">
 			<children>
-				<Label layoutX="501.0" layoutY="50.0" text="Registration Assistant">
+				<Label fx:id="title" layoutX="501.0" layoutY="50.0" text="Registration Assistant">
 					<font>
 						<Font size="50.0" />
 					</font>
 				</Label>
-				<fx:include layoutX="151.1" layoutY="160.0" source="schedule.fxml" />
+				<fx:include fx:id="schedule" layoutX="151.1" layoutY="160.0" source="schedule.fxml" />
 				<fx:include layoutX="231.1" layoutY="220.5" source="section.fxml" />
-				<fx:include layoutX="50.0" layoutY="930.0" source="courses.fxml" />
+				<fx:include fx:id="table" layoutX="50.0" layoutY="930.0" source="sections_table.fxml" />
 			</children>
 		</AnchorPane>
 	</content>
