@@ -9,11 +9,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="sectionPane" maxHeight="50.0" maxWidth="225.0" minHeight="50.0" minWidth="225.0" prefHeight="50.0" prefWidth="225.0"
+<Pane fx:id="pane" maxHeight="50.0" maxWidth="225.0" minHeight="50.0" minWidth="225.0" prefHeight="50.0" prefWidth="225.0"
     xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="registration_assistant.controllers.SectionController">
     <children>
-        <Rectangle fx:id="sectionRectangle" arcHeight="15.0" arcWidth="15.0" fill="#0894e4" height="50.0" stroke="BLACK" strokeType="INSIDE" width="225.0" />
-        <GridPane fx:id="sectionInfo" alignment="TOP_CENTER" maxHeight="50.0" maxWidth="225.0" minHeight="50.0" minWidth="225.0" prefHeight="50.0" prefWidth="225.0">
+        <Rectangle fx:id="rectangle" arcHeight="15.0" arcWidth="15.0" fill="#0894e4" height="50.0" stroke="BLACK" strokeType="INSIDE" width="225.0" />
+        <GridPane fx:id="gridPane" alignment="TOP_CENTER" maxHeight="50.0" maxWidth="225.0" minHeight="50.0" minWidth="225.0" prefHeight="50.0" prefWidth="225.0">
             <columnConstraints>
                 <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" percentWidth="0.0" prefWidth="180.0" />
                 <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="45.0" minWidth="45.0" percentWidth="0.0" prefWidth="45.0" />
