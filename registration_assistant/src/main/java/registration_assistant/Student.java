@@ -64,6 +64,7 @@ public class Student {
                     coursesWithPq.add(courses.get(j));
             }
         }
+
         for (int i = sections.size() - 1; i >= 0; i--) {
             boolean found = false;
             for (int j = 0; j < coursesWithPq.size(); j++) {
