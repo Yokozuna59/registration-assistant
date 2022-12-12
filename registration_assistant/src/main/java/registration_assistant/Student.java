@@ -48,9 +48,11 @@ public class Student {
             String courseName = finishedCourses.get(i).getCourse();
             for (int j = 0; j < courses.size(); j++) {
                 String[] prerequisiteCourses = courses.get(j).getPrerequisites();
-                for (int k = 0; k < prerequisiteCourses.length; k++) {
-                    if (prerequisiteCourses[k].equals(courseName))
-                        coursesWithPq.add(courses.get(j));
+                if (prerequisiteCourses.length == 1) {
+                    for (int k = 0; k < prerequisiteCourses.length; k++) {
+                        if (prerequisiteCourses[k].equals(courseName))
+                            coursesWithPq.add(courses.get(j));
+                    }
                 }
             }
         }
@@ -62,7 +64,6 @@ public class Student {
                     coursesWithPq.add(courses.get(j));
             }
         }
-
         for (int i = sections.size() - 1; i >= 0; i--) {
             boolean found = false;
             for (int j = 0; j < coursesWithPq.size(); j++) {
