@@ -3,20 +3,21 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 
-<TableView fixedCellSize="0.0" prefHeight="814.05" prefWidth="1447.2" xmlns="http://javafx.com/javafx/19"
-    xmlns:fx="http://javafx.com/fxml/1">
+<TableView fx:id="table" fixedCellSize="0.0" prefHeight="814.05" prefWidth="1447.2"
+    xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="registration_assistant.controllers.SectionsTableController">
     <columns>
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="COURSE" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="ACTIVITY" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="CRN" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="DESCREPTION" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="INSTRUCTOR" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="DAY" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="TIME" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="LOCATION" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="STATUS" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="WAITLIST" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="ADD" />
-        <TableColumn editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="REMOVE" />
+        <TableColumn fx:id="courseName" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="COURSE" />
+        <TableColumn fx:id="activity" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="ACTIVITY" />
+        <TableColumn fx:id="crn" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="CRN" />
+        <TableColumn fx:id="description" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="DESCREPTION" />
+        <TableColumn fx:id="instructor" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="INSTRUCTOR" />
+        <TableColumn fx:id="days" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="DAY" />
+        <TableColumn fx:id="time" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="TIME" />
+        <TableColumn fx:id="place" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="LOCATION" />
+        <TableColumn fx:id="status" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="STATUS" />
+        <TableColumn fx:id="waitlist" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="WAITLIST" />
+        <TableColumn fx:id="add" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="ADD" />
+        <TableColumn fx:id="remove" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="REMOVE" />
     </columns>
 </TableView>
