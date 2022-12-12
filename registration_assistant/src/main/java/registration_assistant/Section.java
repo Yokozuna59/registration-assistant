@@ -34,6 +34,19 @@ public class Section extends Course implements Serializable {
 		this.location = location;
 		this.time = time;
 	}
+	public  int timeToMinutes(){
+        String[] hours=time.split("-");
+        int time1=Integer.parseInt(hours[0]);
+        int time2=Integer.parseInt(hours[1]);
+        int h1=time1%100;
+        int h2=time2%100;
+        int m1=time1/100;
+        int m2=time2/100;
+        int dif=(h2*60+m2)-(h1*60+m1);
+        int hd=dif/60;
+        int md=dif%60*60;
+        return hd+md;
+    }
 
 	public String getSection() {
 		return section;
