@@ -2,10 +2,13 @@ package registration_assistant;
 
 import java.io.Serializable;
 
+import javafx.scene.control.Button;
+
 public class Section extends Course implements Serializable {
+	private static final long serialVersionUID = -2029660102333991118L;
 	private String section;
-	private String registerAvailability;
-	private String waitlistAvailability;
+	private String status;
+	private String waitlist;
 	private String activity;
 	private String crn;
 	private String days;
@@ -14,16 +17,18 @@ public class Section extends Course implements Serializable {
 	private String instructor;
 	private String location;
 	private String time;
+	private Button add;
+	private Button remove;
 
 	public Section(int credit, String name, String[] corequisites, String[] prerequisites,
-			String section, String registerAvailability, String waitlistAvailability, String activity,
+			String status, String section, String waitlist, String activity,
 			String crn, String days, String description, String fullName, String instructor, String location,
 			String time) {
 		super(credit, name, corequisites, prerequisites);
 
-		this.registerAvailability = registerAvailability;
+		this.status = status;
 		this.section = section;
-		this.waitlistAvailability = waitlistAvailability;
+		this.waitlist = waitlist;
 
 		this.activity = activity;
 		this.crn = crn;
@@ -33,18 +38,28 @@ public class Section extends Course implements Serializable {
 		this.instructor = instructor;
 		this.location = location;
 		this.time = time;
+		add = new Button("ADD");
+		remove = new Button("REMOVE");
 	}
 
 	public String getSection() {
 		return section;
 	}
 
-	public String getRegisterAvailability() {
-		return registerAvailability;
+	public String getStatus() {
+		return status;
 	}
 
-	public String getWaitlistAvailability() {
-		return waitlistAvailability;
+	public Button getAdd() {
+		return add;
+	}
+
+	public Button getRemove() {
+		return remove;
+	}
+
+	public String getWaitlist() {
+		return waitlist;
 	}
 
 	public String getActivity() {

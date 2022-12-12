@@ -49,10 +49,10 @@ public class SectionsTableController implements Initializable {
     private TableColumn<Section, String> waitlist;
 
     @FXML
-    private TableColumn<Button, String> add;
+    private TableColumn<Section, Button> add;
 
     @FXML
-    private TableColumn<Button, String> remove;
+    private TableColumn<Section, Button> remove;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -67,9 +67,8 @@ public class SectionsTableController implements Initializable {
         place.setCellValueFactory(new PropertyValueFactory<Section, String>("location"));
         status.setCellValueFactory(new PropertyValueFactory<Section, String>("status"));
         waitlist.setCellValueFactory(new PropertyValueFactory<Section, String>("waitlist"));
-        // add.setCellValueFactory(new PropertyValueFactory<Section, Button>(""));
-        // remove.setCellValueFactory(new PropertyValueFactory<Section,
-        // Button>("remove"));
+        add.setCellValueFactory(new PropertyValueFactory<Section, Button>("add"));
+        remove.setCellValueFactory(new PropertyValueFactory<Section, Button>("remove"));
         table.setItems(list);
     }
 }
