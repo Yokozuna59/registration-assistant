@@ -1,10 +1,6 @@
 package registration_assistant;
 
-import java.io.Serializable;
-
-import javafx.scene.control.Button;
-
-public class Section extends Course implements Serializable {
+public class Section extends Course {
 	private static final long serialVersionUID = -2029660102333991118L;
 	private String section;
 	private String status;
@@ -17,8 +13,8 @@ public class Section extends Course implements Serializable {
 	private String instructor;
 	private String location;
 	private String time;
-	private Button add;
-	private Button remove;
+	private CellButton add;
+	private CellButton remove;
 
 	public Section(int credit, String name, String[] corequisites, String[] prerequisites,
 			String status, String section, String waitlist, String activity,
@@ -38,8 +34,8 @@ public class Section extends Course implements Serializable {
 		this.instructor = instructor;
 		this.location = location;
 		this.time = time;
-		add = new Button("ADD");
-		remove = new Button("REMOVE");
+		add = new CellButton("ADD", true);
+		remove = new CellButton("REMOVE", false);
 	}
 
 	public String getSection() {
@@ -50,11 +46,11 @@ public class Section extends Course implements Serializable {
 		return status;
 	}
 
-	public Button getAdd() {
+	public CellButton getAdd() {
 		return add;
 	}
 
-	public Button getRemove() {
+	public CellButton getRemove() {
 		return remove;
 	}
 
