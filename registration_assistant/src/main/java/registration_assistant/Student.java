@@ -27,7 +27,7 @@ public class Student {
         schedules.remove(schedule);
     }
 
-    public static void remainCourses(ArrayList<Course> courses, ArrayList<FinishedCourse> finishedCourses,
+    public void remainCourses(ArrayList<Course> courses, ArrayList<FinishedCourse> finishedCourses,
             ArrayList<Section> sections) {
         for (int i = 0; i < finishedCourses.size(); i++) {
             if (finishedCourses.get(i).getGrade().equals("F"))
