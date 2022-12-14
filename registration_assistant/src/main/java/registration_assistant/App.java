@@ -13,18 +13,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
+
 import java.util.ArrayList;
 
 public class App extends Application {
+    private static ArrayList<Section> sections;
+
+    public static ArrayList<Section> getSections() {
+        return sections;
+    }
+
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException {
         ArrayList<Course> courses = ReadCSV.readDegreePlan(
                 getClass().getResource("/data/DegreePlan.csv").getFile());
         ArrayList<FinishedCourse> finishedCourses = ReadCSV.readFinishedCourse(
                 getClass().getResource("/data/FinishedCourses.csv").getFile());
-        ArrayList<Section> sections = ReadCSV.readCourseOffering(
+        sections = ReadCSV.readCourseOffering(
                 getClass().getResource("/data/CourseOffering.csv").getFile());
-
         ArrayList<Schedule> schedules = new ArrayList<>();
 
         File studentFolder = Paths.get("src", "main", "resources", "student").toFile();
@@ -36,7 +42,6 @@ public class App extends Application {
             schedules.add(schedule);
         } else {
             studentFolder.mkdir();
-            Student.remainCourses(courses, finishedCourses, sections);
             Schedule schedule = new Schedule("202220", sections);
             schedules.add(schedule);
 
@@ -46,6 +51,7 @@ public class App extends Application {
         }
 
         Student student = new Student(finishedCourses, schedules);
+        student.remainCourses(courses, finishedCourses, sections);
 
         ScrollPane root = FXMLLoader.load(getClass().getClassLoader().getResource("views/index.fxml"));
         Scene scene = new Scene(root);
@@ -58,6 +64,6 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }
