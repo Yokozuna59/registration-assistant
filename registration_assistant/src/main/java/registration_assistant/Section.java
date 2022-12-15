@@ -21,6 +21,8 @@ public class Section extends Course {
 	private String time;
 	private CellButton add;
 	private CellButton remove;
+	private CellButton addtoBasket;
+	private CellButton removeFromBasket;
 	private Schedule schedule;
 
 	public Section(int credit, String name, String[] corequisites, String[] prerequisites,
@@ -43,6 +45,9 @@ public class Section extends Course {
 		this.time = time;
 		add = new CellButton("ADD", true);
 		remove = new CellButton("REMOVE", false);
+		addtoBasket=new CellButton("Add", true);
+		removeFromBasket=new CellButton("Remove", true);
+
 	}
 
 	public String getSection() {
