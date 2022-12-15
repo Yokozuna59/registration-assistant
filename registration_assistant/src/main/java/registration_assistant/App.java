@@ -22,7 +22,6 @@ public class App extends Application {
     public static ArrayList<Section> getSections() {
         return sections;
     }
-
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException {
         ArrayList<Course> courses = ReadCSV.readDegreePlan(
@@ -31,7 +30,7 @@ public class App extends Application {
                 getClass().getResource("/data/FinishedCourses.csv").getFile());
         sections = ReadCSV.readCourseOffering(
                 getClass().getResource("/data/CourseOffering.csv").getFile());
-        ArrayList<Schedule> schedules = new ArrayList<>();
+        Schedule Mainschedule ;
 
         File studentFolder = Paths.get("src", "main", "resources", "student").toFile();
         if (studentFolder.exists()) {
@@ -39,20 +38,23 @@ public class App extends Application {
                     getClass().getResource("/student/schedule.ser").getFile());
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             Schedule schedule = (Schedule) objectInputStream.readObject();
-            schedules.add(schedule);
+            Mainschedule=schedule;
         } else {
             studentFolder.mkdir();
-            Schedule schedule = new Schedule("202220", sections);
-            schedules.add(schedule);
+            Schedule schedule = new Schedule("202220", new ArrayList<Section>());
+            Mainschedule=schedule;
 
             FileOutputStream fileOutputStream = new FileOutputStream(new File(studentFolder, "schedule.ser"));
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(schedule);
         }
-
-        Student student = new Student(finishedCourses, schedules);
+        
+        Student student = new Student(finishedCourses, Mainschedule);
+        for(int i=0;i<sections.size();i++){
+            sections.get(i).setSchedule(Mainschedule);
+        }
+        
         student.remainCourses(courses, finishedCourses, sections);
-
         ScrollPane root = FXMLLoader.load(getClass().getClassLoader().getResource("views/index.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);

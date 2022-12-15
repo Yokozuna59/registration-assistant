@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Student {
     private ArrayList<FinishedCourse> finishedCourses;
-    private ArrayList<Schedule> schedules;
+    private Schedule schedules;
 
-    public Student(ArrayList<FinishedCourse> finishedCourses, ArrayList<Schedule> schedules) {
+    public Student(ArrayList<FinishedCourse> finishedCourses, Schedule schedules) {
         this.finishedCourses = finishedCourses;
         this.schedules = schedules;
     }
@@ -15,17 +15,17 @@ public class Student {
         return finishedCourses;
     }
 
-    public ArrayList<Schedule> getSchedules() {
+    public Schedule getSchedules() {
         return schedules;
     }
 
-    public void addSchedule(Schedule schedule) {
-        schedules.add(schedule);
-    }
+    // public void addSchedule(Schedule schedule) {
+    // schedules.add(schedule);
+    // }
 
-    public void removeSchedule(Schedule schedule) {
-        schedules.remove(schedule);
-    }
+    // public void removeSchedule(Schedule schedule) {
+    // schedules.remove(schedule);
+    // }
 
     public void remainCourses(ArrayList<Course> courses, ArrayList<FinishedCourse> finishedCourses,
             ArrayList<Section> sections) {

@@ -29,6 +29,7 @@ public class Schedule implements Serializable {
             sections.remove(section);
         } else {
         }
+        System.out.println("A");
     }
 
     public boolean isRemovableSection(Section section) {

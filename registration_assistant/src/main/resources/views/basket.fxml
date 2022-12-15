@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="893.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <StackPane layoutX="446.0" layoutY="56.0" prefHeight="362.0" prefWidth="445.0">
+         <children>
+            <ScrollPane prefHeight="362.0" prefWidth="452.0">
+               <content>
+                  <TableView prefHeight="362.0" prefWidth="448.0">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Section" />
+                        <TableColumn prefWidth="75.0" text="Day" />
+                        <TableColumn prefWidth="75.0" text="Time" />
+                        <TableColumn prefWidth="75.0" text="Instructor" />
+                        <TableColumn prefWidth="75.0" text="Location" />
+                        <TableColumn prefWidth="75.0" text="Remove" />
+                     </columns>
+                  </TableView>
+               </content>
+            </ScrollPane>
+         </children>
+      </StackPane>
+      <Button layoutX="113.0" layoutY="434.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="167.0" text="Start from a saved schedule" />
+      <Button layoutX="602.0" layoutY="434.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="167.0" text="Next" />
+      <Text layoutX="196.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SECTIONS" />
+      <Text layoutX="651.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basket" />
+      <ScrollPane layoutX="-2.0" layoutY="56.0" prefHeight="362.0" prefWidth="452.0">
+         <content>
+            <TableView prefHeight="362.0" prefWidth="448.0">
+               <columns>
+                  <TableColumn prefWidth="75.0" text="Section" />
+                  <TableColumn prefWidth="75.0" text="Day" />
+                  <TableColumn prefWidth="75.0" text="Time" />
+                  <TableColumn prefWidth="75.0" text="Instructor" />
+                  <TableColumn prefWidth="75.0" text="Location" />
+                  <TableColumn prefWidth="75.0" text="Add" />
+               </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+   </children>
+</Pane>
