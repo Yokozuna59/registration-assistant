@@ -70,7 +70,7 @@ public class Schedule implements Serializable {
                 controller.setStart(start);
                 controller.setEnd(end);
                 controller.setInstructor(section.getInstructor());
-                controller.setSize(0);
+                controller.setSize(section.getTimeToMinutes());
 
                 // pane.setLayoutY(0);
                 // pane.setLayoutX(220.5 + days.get(day) * 225);
