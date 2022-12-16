@@ -111,6 +111,12 @@ public class Section extends Course {
 			schedule.removeSection(this);
 		});
 	}
+	public void setDisabledAddButton(boolean status){
+		add.setDisable(status);
+	}
+	public void setDisabledRemoveButton(boolean status){
+		remove.setDisable(status);
+	}
 
 	public int getTimeToMinutes() {
 		String[] hours = time.split("-");
