@@ -21,26 +21,97 @@ public class Schedule implements Serializable {
     }
 
     public boolean isAddableSection(Section section) {
-        return true;
+        if (sections.size() != 0) {
+            boolean CheckConflict = false;
+            boolean CheckDuplicate = false;
+            for (int i = 0; i < sections.size(); i++) {
+                if (section.getName().equals(sections.get(i).getName()))
+                    CheckDuplicate = true;
+            }
+            String[] days = section.getDays().split("");
+            int StartTime = Integer.parseInt(section.getTime().split("-")[0]);
+            int EndTime = Integer.parseInt(section.getTime().split("-")[1]);
+            for (int i = 0; i < sections.size(); i++) {
+                String[] days2 = sections.get(i).getDays().split("");
+                if (CheckConflictInDays(days, days2)) {
+                    String[] Duration = sections.get(i).getTime().split("-");
+                    if (CheckConflictInHours(Duration, StartTime, EndTime))
+                        CheckConflict = true;
+                }
+            }
+            if (!CheckDuplicate && !CheckConflict)
+                return true;
+            else
+                return false;
+        } else
+            return true;
+    }
+
+    public boolean CheckConflictInDays(String[] Days1, String[] Days2) {
+        for (int i = 0; i < Days1.length; i++) {
+            for (int j = 0; j < Days2.length; j++) {
+                if (Days1[i].equals(Days2[j]))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean CheckConflictInHours(String[] Duration, int StartTime, int EndTime) {
+        int StartTime1 = Integer.parseInt(Duration[0]);
+        int EndTime1 = Integer.parseInt(Duration[1]);
+        if ((StartTime1 <= StartTime && StartTime <= EndTime1) || (StartTime1 <= EndTime && EndTime <= EndTime1))
+            return true;
+        else
+            return false;
+
     }
 
     public void addSection(Section section) {
         if (isAddableSection(section)) {
-            sections.remove(section);
+            ArrayList<Section> RecOrLecSections = App.getSections();
+            boolean found = false;
+            for (int i = 0; i < RecOrLecSections.size(); i++) {
+                if (RecOrLecSections.get(i).getCrn().equals(section.getCrn())
+                        && !RecOrLecSections.get(i).getActivity().equals(section.getActivity())) {
+                    found = true;
+                }
+                if (found && isAddableSection(RecOrLecSections.get(i))) {
+                    sections.add(section);
+                    section.setDisabledAddButton(true);
+                    section.setDisabledRemoveButton(false);
+                    sections.add(RecOrLecSections.get(i));
+                    RecOrLecSections.get(i).setDisabledAddButton(true);
+                    RecOrLecSections.get(i).setDisabledRemoveButton(false);
+                    break;
+                }
+
+            }
+            if (!found) {
+                sections.add(section);
+                section.setDisabledAddButton(true);
+                section.setDisabledRemoveButton(false);
+            }
+
         } else {
         }
-        System.out.println("A");
-    }
-
-    public boolean isRemovableSection(Section section) {
-        return true;
     }
 
     public void removeSection(Section section) {
-        if (isRemovableSection(section)) {
-            sections.add(section);
-        } else {
+        ArrayList<Section> RecOrLecSections = App.getSections();
+        sections.remove(section);
+        section.setDisabledAddButton(false);
+        section.setDisabledRemoveButton(true);
+        for (int i = 0; i < RecOrLecSections.size(); i++) {
+            if (RecOrLecSections.get(i).getCrn().equals(section.getCrn())
+                    && !RecOrLecSections.get(i).getActivity().equals(section.getActivity())) {
+                sections.remove(RecOrLecSections.get(i));
+                RecOrLecSections.get(i).setDisabledAddButton(false);
+                RecOrLecSections.get(i).setDisabledRemoveButton(true);
+            }
+
         }
+
     }
 
     public String getTerm() {
