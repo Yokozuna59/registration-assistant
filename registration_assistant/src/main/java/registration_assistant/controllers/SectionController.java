@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.shape.Rectangle;
 
 public class SectionController {
@@ -15,6 +16,12 @@ public class SectionController {
 
     @FXML
     private GridPane gridPane;
+
+    @FXML
+    private RowConstraints bottomRow;
+
+    @FXML
+    private RowConstraints topRow;
 
     @FXML
     private Label courseInfo;
@@ -47,6 +54,12 @@ public class SectionController {
     public void setSize(int size) {
         pane.setPrefSize(225, size);
         rectangle.setHeight(size);
-        gridPane.resize(225, size);
+        gridPane.setPrefHeight(size);
+        topRow.setPrefHeight(size / 2);
+        bottomRow.setPrefHeight(size / 2);
+    }
+
+    @FXML
+    void initialize() {
     }
 }
