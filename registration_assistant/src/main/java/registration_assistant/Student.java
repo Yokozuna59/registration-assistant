@@ -21,6 +21,10 @@ public class Student {
         return schedules;
     }
 
+    public void setSchedules(Schedule schedules) {
+        this.schedules = schedules;
+    }
+
     public Basket getBasket() {
         return basket;
     }
