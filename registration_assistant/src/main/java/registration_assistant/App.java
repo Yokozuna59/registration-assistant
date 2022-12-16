@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,10 +15,13 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-
 public class App extends Application {
     private static ArrayList<Section> sections;
+    private static Student student;
+
+    public static Student getStudent() {
+        return student;
+    }
 
     public static ArrayList<Section> getSections() {
         return sections;
@@ -31,26 +35,28 @@ public class App extends Application {
                 getClass().getResource("/data/FinishedCourses.csv").getFile());
         sections = ReadCSV.readCourseOffering(
                 getClass().getResource("/data/CourseOffering.csv").getFile());
-        Schedule mainSchedule;
+        Schedule schedule;
 
         File studentFolder = Paths.get("src", "main", "resources", "student").toFile();
         if (studentFolder.exists()) {
             FileInputStream fileInputStream = new FileInputStream(
                     getClass().getResource("/student/schedule.ser").getFile());
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            Schedule schedule = (Schedule) objectInputStream.readObject();
-            mainSchedule = schedule;
+            schedule = (Schedule) objectInputStream.readObject();
         } else {
             studentFolder.mkdir();
-            Schedule schedule = new Schedule("202220", new ArrayList<Section>());
-            mainSchedule = schedule;
+            schedule = new Schedule("202220", new ArrayList<Section>());
 
             FileOutputStream fileOutputStream = new FileOutputStream(new File(studentFolder, "schedule.ser"));
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(schedule);
         }
 
-        Student student = new Student(finishedCourses, mainSchedule, new Basket(new ArrayList<>()));
+        student = new Student(finishedCourses, schedule, new Basket(new ArrayList<>()));
+        for (int i = 0; i < sections.size(); i++) {
+            sections.get(i).setBasket(student.getBasket());
+            sections.get(i).setSchedule(student.getSchedules());
+        }
         student.remainCourses(courses, finishedCourses, sections);
 
         AnchorPane root = FXMLLoader.load(getClass().getClassLoader().getResource("views/basket.fxml"));
