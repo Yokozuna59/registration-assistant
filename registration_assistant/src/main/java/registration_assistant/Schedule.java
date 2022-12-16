@@ -64,41 +64,44 @@ public class Schedule implements Serializable {
             return true;
         else
             return false;
-
     }
 
     public void addSection(Section section) {
         if (isAddableSection(section)) {
-            ArrayList<Section> RecOrLecSections = App.getSections();
+            ArrayList<Section> RecOrLecSections = App.getStudent().getBasket().getSectionsBasket();
             boolean found = false;
             for (int i = 0; i < RecOrLecSections.size(); i++) {
                 if (RecOrLecSections.get(i).getCrn().equals(section.getCrn())
                         && !RecOrLecSections.get(i).getActivity().equals(section.getActivity())) {
                     found = true;
                 }
-                if (found && isAddableSection(RecOrLecSections.get(i))) {
-                    sections.add(section);
-                    section.setDisabledAddButton(true);
-                    section.setDisabledRemoveButton(false);
-                    sections.add(RecOrLecSections.get(i));
-                    RecOrLecSections.get(i).setDisabledAddButton(true);
-                    RecOrLecSections.get(i).setDisabledRemoveButton(false);
+                if (found) {
+                    if (isAddableSection(RecOrLecSections.get(i))) {
+                        sections.add(section);
+                        section.setDisabledAddButton(true);
+                        section.setDisabledRemoveButton(false);
+                        sections.add(RecOrLecSections.get(i));
+                        RecOrLecSections.get(i).setDisabledAddButton(true);
+                        RecOrLecSections.get(i).setDisabledRemoveButton(false);
+                    }
                     break;
                 }
-
             }
             if (!found) {
                 sections.add(section);
                 section.setDisabledAddButton(true);
                 section.setDisabledRemoveButton(false);
             }
-
         } else {
         }
     }
 
+    public boolean isRemovableSection(Section section) {
+        return true;
+    }
+
     public void removeSection(Section section) {
-        ArrayList<Section> RecOrLecSections = App.getSections();
+        ArrayList<Section> RecOrLecSections = App.getStudent().getBasket().getSectionsBasket();
         sections.remove(section);
         section.setDisabledAddButton(false);
         section.setDisabledRemoveButton(true);
@@ -109,9 +112,7 @@ public class Schedule implements Serializable {
                 RecOrLecSections.get(i).setDisabledAddButton(false);
                 RecOrLecSections.get(i).setDisabledRemoveButton(true);
             }
-
         }
-
     }
 
     public String getTerm() {

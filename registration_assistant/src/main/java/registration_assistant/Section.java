@@ -1,11 +1,5 @@
 package registration_assistant;
 
-import java.util.ArrayList;
-import java.util.jar.Attributes.Name;
-
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-
 public class Section extends Course {
 	private static final long serialVersionUID = -2029660102333991118L;
 	private String section;
@@ -21,8 +15,6 @@ public class Section extends Course {
 	private String time;
 	private CellButton add;
 	private CellButton remove;
-	private CellButton addtoBasket;
-	private CellButton removeFromBasket;
 	private Schedule schedule;
 
 	public Section(int credit, String name, String[] corequisites, String[] prerequisites,
@@ -110,12 +102,6 @@ public class Section extends Course {
 		remove.setOnAction(e -> {
 			schedule.removeSection(this);
 		});
-	}
-	public void setDisabledAddButton(boolean status){
-		add.setDisable(status);
-	}
-	public void setDisabledRemoveButton(boolean status){
-		remove.setDisable(status);
 	}
 
 	public int getTimeToMinutes() {

@@ -4,11 +4,13 @@ import java.util.ArrayList;
 
 public class Student {
     private ArrayList<FinishedCourse> finishedCourses;
+    private Basket basket;
     private Schedule schedules;
 
-    public Student(ArrayList<FinishedCourse> finishedCourses, Schedule schedules) {
+    public Student(ArrayList<FinishedCourse> finishedCourses, Schedule schedules, Basket basket) {
         this.finishedCourses = finishedCourses;
         this.schedules = schedules;
+        this.basket = basket;
     }
 
     public ArrayList<FinishedCourse> getFinisehdCourses() {
@@ -17,6 +19,10 @@ public class Student {
 
     public Schedule getSchedules() {
         return schedules;
+    }
+
+    public Basket getBasket() {
+        return basket;
     }
 
     // public void addSchedule(Schedule schedule) {

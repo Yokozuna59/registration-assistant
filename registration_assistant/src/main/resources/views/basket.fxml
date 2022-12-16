@@ -7,46 +7,30 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="668.0"
-    prefWidth="1563.05" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="984.05" prefWidth="1563.05" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="registration_assistant.controllers.BasketController">
     <children>
-        <Button fx:id="savedScheduleButton" layoutX="299.0" layoutY="579.0" mnemonicParsing="false"
-            prefHeight="37.0" text="Start from a Saved Schedule" />
-        <Text layoutX="362.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sections">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Text>
-        <Text layoutX="697.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basket">
+        <Button fx:id="savedScheduleButton" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" prefHeight="37.0" text="Start from a Saved Schedule" />
+        <Text layoutX="697.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basket">
             <font>
                 <Font size="49.0" />
             </font>
         </Text>
-        <TableView fx:id="sections_table" layoutX="32.925" layoutY="145.0" prefHeight="400.0" prefWidth="723.6">
-            <columns>
-                <TableColumn minWidth="120.6" prefWidth="120.6" text="COURSE" />
-                <TableColumn minWidth="120.6" prefWidth="120.6" text="DAY" />
-                <TableColumn minWidth="120.6" prefWidth="120.6" text="TIME" />
-                <TableColumn minWidth="120.6" prefWidth="120.6" text="INSTRUCTOR" />
-                <TableColumn minWidth="120.6" prefWidth="120.6" text="LOCATION" />
-                <TableColumn minWidth="120.6" prefWidth="120.6" text="ADD" />
-            </columns>
-        </TableView>
-        <Button fx:id="nextButton" layoutX="1085.0" layoutY="581.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="167.0" text="Next" />
-        <TableView fx:id="basket_table" layoutX="806.525" layoutY="145.0" prefHeight="400.0" prefWidth="723.6">
-            <columns>
-                <TableColumn minWidth="120.6" prefWidth="120.6" text="COURSE" />
-                <TableColumn minWidth="120.6" prefWidth="120.6" text="DAY" />
-                <TableColumn minWidth="120.6" prefWidth="120.6" text="TIME" />
-                <TableColumn minWidth="120.6" prefWidth="120.6" text="INSTRUCTOR" />
-                <TableColumn minWidth="120.6" prefWidth="120.6" text="LOCATION" />
-                <TableColumn minWidth="120.6" prefWidth="120.6" text="REMOVE" />
-            </columns>
-        </TableView>
-        <Text layoutX="1094.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Basket">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Text>
+        <Button fx:id="nextButton" layoutX="1300.0" layoutY="48.0" mnemonicParsing="false" onAction="#switchToSchedule" prefHeight="37.0" prefWidth="167.0" text="Next" />
+      <TableView fx:id="table" fixedCellSize="0.0" layoutX="50.0" layoutY="110.0" prefHeight="814.05" prefWidth="1447.2">
+         <columns>
+            <TableColumn fx:id="courseName" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="COURSE" />
+            <TableColumn fx:id="activity" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="ACTIVITY" />
+            <TableColumn fx:id="crn" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="CRN" />
+            <TableColumn fx:id="description" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="DESCREPTION" />
+            <TableColumn fx:id="instructor" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="INSTRUCTOR" />
+            <TableColumn fx:id="days" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="DAY" />
+            <TableColumn fx:id="time" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="TIME" />
+            <TableColumn fx:id="place" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="LOCATION" />
+            <TableColumn fx:id="status" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="STATUS" />
+            <TableColumn fx:id="waitlist" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="WAITLIST" />
+            <TableColumn fx:id="add" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="ADD" />
+            <TableColumn fx:id="remove" editable="false" minWidth="120.6" prefWidth="120.6" resizable="false" text="REMOVE" />
+         </columns>
+      </TableView>
     </children>
 </AnchorPane>

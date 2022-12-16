@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -22,6 +22,7 @@ public class App extends Application {
     public static ArrayList<Section> getSections() {
         return sections;
     }
+
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException {
         ArrayList<Course> courses = ReadCSV.readDegreePlan(
@@ -30,7 +31,7 @@ public class App extends Application {
                 getClass().getResource("/data/FinishedCourses.csv").getFile());
         sections = ReadCSV.readCourseOffering(
                 getClass().getResource("/data/CourseOffering.csv").getFile());
-        Schedule Mainschedule ;
+        Schedule mainSchedule;
 
         File studentFolder = Paths.get("src", "main", "resources", "student").toFile();
         if (studentFolder.exists()) {
@@ -38,24 +39,21 @@ public class App extends Application {
                     getClass().getResource("/student/schedule.ser").getFile());
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             Schedule schedule = (Schedule) objectInputStream.readObject();
-            Mainschedule=schedule;
+            mainSchedule = schedule;
         } else {
             studentFolder.mkdir();
             Schedule schedule = new Schedule("202220", new ArrayList<Section>());
-            Mainschedule=schedule;
+            mainSchedule = schedule;
 
             FileOutputStream fileOutputStream = new FileOutputStream(new File(studentFolder, "schedule.ser"));
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(schedule);
         }
-        
-        Student student = new Student(finishedCourses, Mainschedule);
-        for(int i=0;i<sections.size();i++){
-            sections.get(i).setSchedule(Mainschedule);
-        }
-        
+
+        Student student = new Student(finishedCourses, mainSchedule, new Basket(new ArrayList<>()));
         student.remainCourses(courses, finishedCourses, sections);
-        ScrollPane root = FXMLLoader.load(getClass().getClassLoader().getResource("views/index.fxml"));
+
+        AnchorPane root = FXMLLoader.load(getClass().getClassLoader().getResource("views/basket.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.sizeToScene();
