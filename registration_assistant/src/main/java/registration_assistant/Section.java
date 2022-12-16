@@ -13,9 +13,12 @@ public class Section extends Course {
 	private String instructor;
 	private String location;
 	private String time;
-	private CellButton add;
-	private CellButton remove;
+	private CellButton addToSchedule;
+	private CellButton removeFromSchedule;
+	private BasketButton addToBasket;
+	private BasketButton removeFromBasket;
 	private Schedule schedule;
+	private Basket basket;
 
 	public Section(int credit, String name, String[] corequisites, String[] prerequisites,
 			String status, String section, String waitlist, String activity,
@@ -35,11 +38,10 @@ public class Section extends Course {
 		this.instructor = instructor;
 		this.location = location;
 		this.time = time;
-		add = new CellButton("ADD", true);
-		remove = new CellButton("REMOVE", false);
-		addtoBasket=new CellButton("Add", true);
-		removeFromBasket=new CellButton("Remove", true);
-
+		addToSchedule = new CellButton("ADD", true);
+		removeFromSchedule = new CellButton("REMOVE", false);
+		addToBasket = new BasketButton("Add", true);
+		removeFromBasket = new BasketButton("Remove", false);
 	}
 
 	public String getSection() {
@@ -50,12 +52,12 @@ public class Section extends Course {
 		return status;
 	}
 
-	public CellButton getAdd() {
-		return add;
+	public CellButton getAddToSchedule() {
+		return addToSchedule;
 	}
 
-	public CellButton getRemove() {
-		return remove;
+	public CellButton getRemoveFromSchedule() {
+		return removeFromSchedule;
 	}
 
 	public String getWaitlist() {
@@ -96,12 +98,34 @@ public class Section extends Course {
 
 	public void setSchedule(Schedule schedule) {
 		this.schedule = schedule;
-		add.setOnAction(e -> {
+		addToSchedule.setOnAction(e -> {
 			schedule.addSection(this);
 		});
-		remove.setOnAction(e -> {
+		removeFromSchedule.setOnAction(e -> {
 			schedule.removeSection(this);
 		});
+	}
+
+	public void setBasket(Basket basket) {
+		this.basket = basket;
+		addToBasket.setOnAction(e -> {
+			addToBasket.disable();
+			removeFromBasket.enable();
+			basket.addSection(this);
+		});
+		removeFromBasket.setOnAction(e -> {
+			addToBasket.enable();
+			removeFromBasket.disable();
+			basket.removeSection(this);
+		});
+	}
+
+	public void setDisabledAddButton(boolean status) {
+		addToSchedule.setDisable(status);
+	}
+
+	public void setDisabledRemoveButton(boolean status) {
+		removeFromSchedule.setDisable(status);
 	}
 
 	public int getTimeToMinutes() {
@@ -116,5 +140,21 @@ public class Section extends Course {
 		int hd = difference / 60;
 		int md = difference % 60 * 60;
 		return hd + md;
+	}
+
+	public BasketButton getAddToBasket() {
+		return addToBasket;
+	}
+
+	public BasketButton getRemoveFromBasket() {
+		return removeFromBasket;
+	}
+
+	public Schedule getSchedule() {
+		return schedule;
+	}
+
+	public Basket getBasket() {
+		return basket;
 	}
 }
