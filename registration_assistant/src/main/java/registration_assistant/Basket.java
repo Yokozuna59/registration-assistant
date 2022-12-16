@@ -3,21 +3,21 @@ package registration_assistant;
 import java.util.ArrayList;
 
 public class Basket {
-    private static ArrayList<Section> sectionsBasket;
+    private ArrayList<Section> sectionsBasket;
 
     public Basket(ArrayList<Section> sectionsInBasket) {
-        Basket.sectionsBasket = sectionsInBasket;
+        this.sectionsBasket = sectionsInBasket;
     }
 
-    public void addSection(ArrayList<Section> sections, Section section) {
+    public void addSection(Section section) {
         sectionsBasket.add(section);
     }
 
-    public void removeSection(ArrayList<Section> sections, Section section) {
+    public void removeSection(Section section) {
         sectionsBasket.remove(section);
     }
 
-    public static ArrayList<Section> getSectionsBasket() {
+    public ArrayList<Section> getSectionsBasket() {
         return sectionsBasket;
     }
 }
