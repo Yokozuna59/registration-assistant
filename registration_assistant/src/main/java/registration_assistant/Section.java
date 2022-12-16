@@ -125,8 +125,8 @@ public class Section extends Course {
 			addToBasket.disable();
 			removeFromBasket.enable();
 			basket.addSection(this);
-			Section sectionWithDuplicateCrn=checkDuplicateCrn();
-			if(sectionWithDuplicateCrn!=null){
+			Section sectionWithDuplicateCrn = checkDuplicateCrn();
+			if (sectionWithDuplicateCrn != null) {
 				sectionWithDuplicateCrn.addToBasket.disable();
 				sectionWithDuplicateCrn.removeFromBasket.enable();
 				basket.addSection(sectionWithDuplicateCrn);
@@ -136,12 +136,26 @@ public class Section extends Course {
 			addToBasket.enable();
 			removeFromBasket.disable();
 			basket.removeSection(this);
-			Section sectionWithDuplicateCrn=checkDuplicateCrn();
-			if(sectionWithDuplicateCrn!=null){
+			this.getAddToSchedule().setDisable(false);
+			this.getRemoveFromSchedule().setDisable(true);
+			for (int i = 0; i < schedule.getSections().size(); i++) {
+				if (this == schedule.getSections().get(i))
+					schedule.getSections().remove(this);
+			}
+
+			Section sectionWithDuplicateCrn = checkDuplicateCrn();
+			if (sectionWithDuplicateCrn != null) {
 				sectionWithDuplicateCrn.addToBasket.enable();
 				sectionWithDuplicateCrn.removeFromBasket.disable();
 				basket.removeSection(sectionWithDuplicateCrn);
+				sectionWithDuplicateCrn.getAddToSchedule().setDisable(false);
+				sectionWithDuplicateCrn.getRemoveFromSchedule().setDisable(true);
+				for (int i = 0; i < schedule.getSections().size(); i++) {
+					if (sectionWithDuplicateCrn == schedule.getSections().get(i))
+						schedule.getSections().remove(sectionWithDuplicateCrn);
+				}
 			}
+
 		});
 	}
 

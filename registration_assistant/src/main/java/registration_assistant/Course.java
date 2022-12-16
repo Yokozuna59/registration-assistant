@@ -30,4 +30,10 @@ public class Course implements Serializable {
     public String[] getPrerequisites() {
         return prerequisites;
     }
+    public void setPrerequisites(String[] prerequisites){
+		this.prerequisites=prerequisites;
+	}
+    public void setCoerequisites(String[] corequisites){
+		this.corequisites=corequisites;
+	}
 }
