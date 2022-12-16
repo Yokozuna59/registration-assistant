@@ -56,7 +56,8 @@ public class SectionsTableController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<Section> list = FXCollections.observableArrayList(App.getSections());
+        ObservableList<Section> list = FXCollections
+                .observableArrayList(App.getStudent().getBasket().getSectionsBasket());
         courseName.setCellValueFactory(new PropertyValueFactory<Section, String>("fullName"));
         activity.setCellValueFactory(new PropertyValueFactory<Section, String>("activity"));
         crn.setCellValueFactory(new PropertyValueFactory<Section, String>("crn"));
@@ -67,8 +68,8 @@ public class SectionsTableController implements Initializable {
         place.setCellValueFactory(new PropertyValueFactory<Section, String>("location"));
         status.setCellValueFactory(new PropertyValueFactory<Section, String>("status"));
         waitlist.setCellValueFactory(new PropertyValueFactory<Section, String>("waitlist"));
-        add.setCellValueFactory(new PropertyValueFactory<Section, Button>("add"));
-        remove.setCellValueFactory(new PropertyValueFactory<Section, Button>("remove"));
+        add.setCellValueFactory(new PropertyValueFactory<Section, Button>("addToSchedule"));
+        remove.setCellValueFactory(new PropertyValueFactory<Section, Button>("removeFromSchedule"));
         table.setItems(list);
     }
 }
