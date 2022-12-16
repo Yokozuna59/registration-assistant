@@ -1,5 +1,7 @@
 package registration_assistant;
 
+import java.util.ArrayList;
+
 public class Section extends Course {
 	private static final long serialVersionUID = -2029660102333991118L;
 	private String section;
@@ -106,17 +108,40 @@ public class Section extends Course {
 		});
 	}
 
+	public Section checkDuplicateCrn() {
+		ArrayList<Section> sections = App.getSections();
+		for (int i = 0; i < sections.size(); i++) {
+			if (sections.get(i).getCrn().equals(crn)
+					&& !sections.get(i).getActivity().equals(activity)) {
+				return sections.get(i);
+			}
+		}
+		return null;
+	}
+
 	public void setBasket(Basket basket) {
 		this.basket = basket;
 		addToBasket.setOnAction(e -> {
 			addToBasket.disable();
 			removeFromBasket.enable();
 			basket.addSection(this);
+			Section sectionWithDuplicateCrn=checkDuplicateCrn();
+			if(sectionWithDuplicateCrn!=null){
+				sectionWithDuplicateCrn.addToBasket.disable();
+				sectionWithDuplicateCrn.removeFromBasket.enable();
+				basket.addSection(sectionWithDuplicateCrn);
+			}
 		});
 		removeFromBasket.setOnAction(e -> {
 			addToBasket.enable();
 			removeFromBasket.disable();
 			basket.removeSection(this);
+			Section sectionWithDuplicateCrn=checkDuplicateCrn();
+			if(sectionWithDuplicateCrn!=null){
+				sectionWithDuplicateCrn.addToBasket.enable();
+				sectionWithDuplicateCrn.removeFromBasket.disable();
+				basket.removeSection(sectionWithDuplicateCrn);
+			}
 		});
 	}
 
