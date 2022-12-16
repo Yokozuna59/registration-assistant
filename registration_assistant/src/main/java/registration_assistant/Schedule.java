@@ -136,17 +136,17 @@ public class Schedule implements Serializable {
                 FXMLLoader loader = new FXMLLoader();
                 Pane pane = loader.load(getClass().getResource("/views/section.fxml"));
                 SectionController controller = loader.getController();
-
                 String[] time = section.getTime().split("-");
                 String start = time[0];
                 String end = time[1];
+                int StartTimeMinutes = Integer.parseInt(start) % 100;
+                int StartTimeHours = Integer.parseInt(start) / 100;
                 controller.setStart(start);
                 controller.setEnd(end);
                 controller.setInstructor(section.getInstructor());
                 controller.setSize(section.getTimeToMinutes());
-
-                // pane.setLayoutY(0);
-                // pane.setLayoutX(220.5 + days.get(day) * 225);
+                pane.setLayoutY(220.5 + ((StartTimeHours - 7) * 60) + StartTimeMinutes);
+                pane.setLayoutX(231.1 + days.get(day) * 225);
             }
         }
     }
