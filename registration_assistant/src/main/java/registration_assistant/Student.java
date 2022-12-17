@@ -29,6 +29,10 @@ public class Student {
         return basket;
     }
 
+    public void setBasket(Basket basket) {
+        this.basket = basket;
+    }
+
     // public void addSchedule(Schedule schedule) {
     // schedules.add(schedule);
     // }
