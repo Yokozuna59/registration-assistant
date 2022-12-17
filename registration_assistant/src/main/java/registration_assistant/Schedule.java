@@ -25,24 +25,24 @@ public class Schedule implements Serializable {
 
     public boolean isAddableSection(Section section) {
         if (sections.size() != 0) {
-            boolean CheckConflict = false;
-            boolean CheckDuplicate = false;
+            boolean checkConflict = false;
+            boolean checkDuplicate = false;
             for (int i = 0; i < sections.size(); i++) {
                 if (section.getName().equals(sections.get(i).getName()))
-                    CheckDuplicate = true;
+                    checkDuplicate = true;
             }
             String[] days = section.getDays().split("");
-            int StartTime = Integer.parseInt(section.getTime().split("-")[0]);
-            int EndTime = Integer.parseInt(section.getTime().split("-")[1]);
+            int startTime = Integer.parseInt(section.getTime().split("-")[0]);
+            int endTime = Integer.parseInt(section.getTime().split("-")[1]);
             for (int i = 0; i < sections.size(); i++) {
                 String[] days2 = sections.get(i).getDays().split("");
-                if (CheckConflictInDays(days, days2)) {
-                    String[] Duration = sections.get(i).getTime().split("-");
-                    if (CheckConflictInHours(Duration, StartTime, EndTime))
-                        CheckConflict = true;
+                if (checkConflictInDays(days, days2)) {
+                    String[] duration = sections.get(i).getTime().split("-");
+                    if (checkConflictInHours(duration, startTime, endTime))
+                        checkConflict = true;
                 }
             }
-            if (!CheckDuplicate && !CheckConflict)
+            if (!checkDuplicate && !checkConflict)
                 return true;
             else
                 return false;
@@ -50,20 +50,20 @@ public class Schedule implements Serializable {
             return true;
     }
 
-    public boolean CheckConflictInDays(String[] Days1, String[] Days2) {
-        for (int i = 0; i < Days1.length; i++) {
-            for (int j = 0; j < Days2.length; j++) {
-                if (Days1[i].equals(Days2[j]))
+    public boolean checkConflictInDays(String[] days1, String[] days2) {
+        for (int i = 0; i < days1.length; i++) {
+            for (int j = 0; j < days2.length; j++) {
+                if (days1[i].equals(days2[j]))
                     return true;
             }
         }
         return false;
     }
 
-    public boolean CheckConflictInHours(String[] Duration, int StartTime, int EndTime) {
-        int StartTime1 = Integer.parseInt(Duration[0]);
-        int EndTime1 = Integer.parseInt(Duration[1]);
-        if ((StartTime1 <= StartTime && StartTime <= EndTime1) || (StartTime1 <= EndTime && EndTime <= EndTime1))
+    public boolean checkConflictInHours(String[] duration, int startTime, int endTime) {
+        int startTime1 = Integer.parseInt(duration[0]);
+        int endTime1 = Integer.parseInt(duration[1]);
+        if ((startTime1 <= startTime && startTime <= endTime1) || (startTime1 <= endTime && endTime <= endTime1))
             return true;
         else
             return false;
@@ -71,21 +71,21 @@ public class Schedule implements Serializable {
 
     public void addSection(Section section) {
         if (isAddableSection(section)) {
-            ArrayList<Section> RecOrLecSections = App.getStudent().getBasket().getSectionsBasket();
+            ArrayList<Section> recOrLecSections = App.getStudent().getBasket().getSectionsBasket();
             boolean found = false;
-            for (int i = 0; i < RecOrLecSections.size(); i++) {
-                if (RecOrLecSections.get(i).getCrn().equals(section.getCrn())
-                        && !RecOrLecSections.get(i).getActivity().equals(section.getActivity())) {
+            for (int i = 0; i < recOrLecSections.size(); i++) {
+                if (recOrLecSections.get(i).getCrn().equals(section.getCrn())
+                        && !recOrLecSections.get(i).getActivity().equals(section.getActivity())) {
                     found = true;
                 }
                 if (found) {
-                    if (isAddableSection(RecOrLecSections.get(i))) {
+                    if (isAddableSection(recOrLecSections.get(i))) {
                         sections.add(section);
                         section.setDisabledAddButton(true);
                         section.setDisabledRemoveButton(false);
-                        sections.add(RecOrLecSections.get(i));
-                        RecOrLecSections.get(i).setDisabledAddButton(true);
-                        RecOrLecSections.get(i).setDisabledRemoveButton(false);
+                        sections.add(recOrLecSections.get(i));
+                        recOrLecSections.get(i).setDisabledAddButton(true);
+                        recOrLecSections.get(i).setDisabledRemoveButton(false);
                     }
                     break;
                 }
@@ -130,18 +130,18 @@ public class Schedule implements Serializable {
     }
 
     public void removeSection(Section section) {
-        ArrayList<Section> RecOrLecSections = App.getStudent().getBasket().getSectionsBasket();
+        ArrayList<Section> recOrLecSections = App.getStudent().getBasket().getSectionsBasket();
         sections.remove(section);
         section.setDisabledAddButton(false);
         section.setDisabledRemoveButton(true);
         removePane(section);
-        for (int i = 0; i < RecOrLecSections.size(); i++) {
-            if (RecOrLecSections.get(i).getCrn().equals(section.getCrn())
-                    && !RecOrLecSections.get(i).getActivity().equals(section.getActivity())) {
-                sections.remove(RecOrLecSections.get(i));
-                RecOrLecSections.get(i).setDisabledAddButton(false);
-                RecOrLecSections.get(i).setDisabledRemoveButton(true);
-                removePane(RecOrLecSections.get(i));
+        for (int i = 0; i < recOrLecSections.size(); i++) {
+            if (recOrLecSections.get(i).getCrn().equals(section.getCrn())
+                    && !recOrLecSections.get(i).getActivity().equals(section.getActivity())) {
+                sections.remove(recOrLecSections.get(i));
+                recOrLecSections.get(i).setDisabledAddButton(false);
+                recOrLecSections.get(i).setDisabledRemoveButton(true);
+                removePane(recOrLecSections.get(i));
             }
         }
         try {
@@ -184,9 +184,9 @@ public class Schedule implements Serializable {
                 controller.setCourseInfo(section.getFullName(), section.getLocation());
                 controller.setSize(section.getTimeToMinutes());
 
-                int StartTimeMinutes = Integer.parseInt(start) % 100;
-                int StartTimeHours = Integer.parseInt(start) / 100;
-                pane.setLayoutY(220.5 + ((StartTimeHours - 7) * 60) + StartTimeMinutes);
+                int startTimeMinutes = Integer.parseInt(start) % 100;
+                int startTimeHours = Integer.parseInt(start) / 100;
+                pane.setLayoutY(220.5 + ((startTimeHours - 7) * 60) + startTimeMinutes);
                 pane.setLayoutX(231.1 + (days.get(day) - 1) * 225);
                 ((AnchorPane) (((ScrollPane) App.getScene().getRoot()).getContent())).getChildren().add(pane);
             }
