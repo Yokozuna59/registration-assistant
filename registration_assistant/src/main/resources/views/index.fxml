@@ -22,8 +22,6 @@
                 </Label>
                 <fx:include fx:id="schedule" layoutX="151.1" layoutY="160.0"
                     source="schedule.fxml" />
-                <fx:include layoutX="231.1" layoutY="220.5"
-                    source="section.fxml" />
                 <fx:include fx:id="table" layoutX="50.0" layoutY="930.0"
                     source="sections_table.fxml" />
                 <Button fx:id="backButton" alignment="CENTER" layoutY="69.0"
