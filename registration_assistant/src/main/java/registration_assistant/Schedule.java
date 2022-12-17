@@ -6,8 +6,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import registration_assistant.controllers.SectionController;
 
@@ -94,10 +97,36 @@ public class Schedule implements Serializable {
             }
         } else {
         }
+        try {
+            reRenderSchedule();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean isRemovableSection(Section section) {
         return true;
+    }
+
+    public static void removePane(Section section) {
+        ObservableList<Node> nodes = ((AnchorPane) (((ScrollPane) App.getScene().getRoot()).getContent()))
+                .getChildren();
+        for (int i = nodes.size() - 1; i >= 0; i--) {
+            if (nodes.get(i) instanceof AnchorPane) {
+                continue;
+            } else if (nodes.get(i) instanceof Pane) {
+                Pane pane = (Pane) nodes.get(i);
+                ((AnchorPane) (((ScrollPane) App.getScene().getRoot()).getContent())).getChildren().remove(pane);
+            }
+        }
+        for (Node node : nodes) {
+            if (node instanceof AnchorPane) {
+                continue;
+            } else if (node instanceof Pane) {
+                Pane pane = (Pane) node;
+                ((AnchorPane) (((ScrollPane) App.getScene().getRoot()).getContent())).getChildren().remove(pane);
+            }
+        }
     }
 
     public void removeSection(Section section) {
@@ -105,13 +134,20 @@ public class Schedule implements Serializable {
         sections.remove(section);
         section.setDisabledAddButton(false);
         section.setDisabledRemoveButton(true);
+        removePane(section);
         for (int i = 0; i < RecOrLecSections.size(); i++) {
             if (RecOrLecSections.get(i).getCrn().equals(section.getCrn())
                     && !RecOrLecSections.get(i).getActivity().equals(section.getActivity())) {
                 sections.remove(RecOrLecSections.get(i));
                 RecOrLecSections.get(i).setDisabledAddButton(false);
                 RecOrLecSections.get(i).setDisabledRemoveButton(true);
+                removePane(RecOrLecSections.get(i));
             }
+        }
+        try {
+            reRenderSchedule();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -123,7 +159,7 @@ public class Schedule implements Serializable {
         return sections;
     }
 
-    public void reRenderSchedule(ScrollPane scrollPane) throws IOException {
+    public void reRenderSchedule() throws IOException {
         Map<String, Integer> days = new HashMap<>();
         days.put("U", 1);
         days.put("M", 2);
@@ -134,19 +170,25 @@ public class Schedule implements Serializable {
         for (Section section : sections) {
             for (String day : section.getDays().split("")) {
                 FXMLLoader loader = new FXMLLoader();
-                Pane pane = loader.load(getClass().getResource("/views/section.fxml"));
+                loader.setLocation(getClass().getResource("/views/section.fxml"));
+                Pane pane = loader.load();
                 SectionController controller = loader.getController();
+
                 String[] time = section.getTime().split("-");
                 String start = time[0];
                 String end = time[1];
-                int StartTimeMinutes = Integer.parseInt(start) % 100;
-                int StartTimeHours = Integer.parseInt(start) / 100;
+
                 controller.setStart(start);
                 controller.setEnd(end);
                 controller.setInstructor(section.getInstructor());
+                controller.setCourseInfo(section.getFullName(), section.getLocation());
                 controller.setSize(section.getTimeToMinutes());
+
+                int StartTimeMinutes = Integer.parseInt(start) % 100;
+                int StartTimeHours = Integer.parseInt(start) / 100;
                 pane.setLayoutY(220.5 + ((StartTimeHours - 7) * 60) + StartTimeMinutes);
-                pane.setLayoutX(231.1 + days.get(day) * 225);
+                pane.setLayoutX(231.1 + (days.get(day) - 1) * 225);
+                ((AnchorPane) (((ScrollPane) App.getScene().getRoot()).getContent())).getChildren().add(pane);
             }
         }
     }
