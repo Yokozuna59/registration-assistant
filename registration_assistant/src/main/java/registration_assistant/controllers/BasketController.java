@@ -24,7 +24,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import registration_assistant.App;
-import registration_assistant.Basket;
 import registration_assistant.Schedule;
 import registration_assistant.Section;
 
@@ -76,6 +75,41 @@ public class BasketController implements Initializable {
     }
 
     public void goToSavedSchedule(ActionEvent e) throws IOException {
+        try {
+            FileInputStream fileInputStream = new FileInputStream(
+                    getClass().getResource("/student/schedule.ser").getFile());
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            Schedule schedule = (Schedule) objectInputStream.readObject();
+            ArrayList<Section> scheduleSections = schedule.getSections();
+
+            ArrayList<Section> allSections = App.getSections();
+
+            for (int i = 0; i < allSections.size(); i++) {
+                for (int j = 0; j < scheduleSections.size(); j++) {
+                    if (allSections.get(i).getFullName().equals(scheduleSections.get(j).getFullName())
+                            && allSections.get(i).getActivity().equals(scheduleSections.get(j).getActivity())) {
+                        allSections.set(i, scheduleSections.get(j));
+                        Section section = scheduleSections.get(j);
+                        section.getRemoveFromSchedule().setText("REMOVE");
+                        section.getAddToSchedule().setText("ADD");
+                        section.getAddToSchedule().disable();
+                        App.getStudent().getBasket().addSection(section);
+
+                        allSections.get(i).getRemoveFromBasket().setText("REMOVE");
+                        allSections.get(i).getAddToBasket().setText("ADD");
+                        allSections.get(i).getAddToBasket().disable();
+                    }
+                }
+            }
+            for (Section section : allSections) {
+                section.setSchedule(schedule);
+                section.setBasket(App.getStudent().getBasket());
+            }
+            App.getStudent().setSchedules(schedule);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("views/index.fxml"));
         App.setPane(root);
         try {
@@ -92,27 +126,7 @@ public class BasketController implements Initializable {
 
         File studentSchedule = Paths.get("src", "main", "resources", "student",
                 "schedule.ser").toFile();
-        if (studentSchedule.exists()) {
-            try {
-                FileInputStream fileInputStream = new FileInputStream(
-                        getClass().getResource("/student/schedule.ser").getFile());
-                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-                Schedule schedule = (Schedule) objectInputStream.readObject();
-
-                ArrayList<Section> sections = schedule.getSections();
-                Basket basket = new Basket(sections);
-
-                for (int i = 0; i < sections.size(); i++) {
-                    sections.get(i).setBasket(basket);
-                    // sections.get(i).setSchedule(schedule);
-                }
-
-                // App.getStudent().setBasket(basket);
-                App.getStudent().setSchedules(schedule);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
+        if (!studentSchedule.exists()) {
             savedScheduleButton.setDisable(true);
         }
 
